@@ -9,11 +9,11 @@
 # You can add other services your application may depend on here.
 
 services:
-  todo-app:
+  node-template:
     build:
       context: ./app
     depends_on:
-      - todo-database
+      - node-template-database
     environment:
       NODE_ENV: production
     ports:
@@ -27,12 +27,12 @@ services:
           target: /usr/src/app
           action: sync
 
-  todo-database:
+  node-template-database:
     image: mongo:6
-    #volumes: 
-    #  - database:/data/db
+    volumes: 
+      - database:/data/db
     ports:
       - 27017:27017
 
-#volumes:
-  #database:
+volumes:
+  database:
